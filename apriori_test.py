@@ -4,7 +4,8 @@ from pprint import pprint
 import pickle
 from multiprocessing import cpu_count
 from multiprocessing.pool import ThreadPool
-
+import itertools
+'''
 def support_hash_tree_gen(data_list, max_len):
     support_hash_tree = {}
 
@@ -132,3 +133,34 @@ if __name__ == "__main__":
     print("\nGenerating maximal frequent itemsets...")
     maximal_itemsets = (pool.apply_async(maximal_freq_itemset_gen, (freq_itemsets, support_hash_tree, max_len))).get()
     pprint(maximal_itemsets)
+
+itemset = ['bread', 'butter', 'beer']
+set_len = len(itemset)
+
+for consequent_len in range(1, set_len):
+    itemset_subsets = set(itertools.combinations(set(list(itemset)), (set_len - consequent_len)))
+    consequents = set(itertools.combinations(set(list(itemset)), consequent_len))
+    for itemset_subset in itemset_subsets:
+        for consequent in consequents:
+            set_union = set(list(itemset_subset)).union(set(list(consequent)))
+            if set_union == set(list(itemset)) and len(set_union) == len(itemset):
+                print(itemset_subset, consequent)'''
+
+def preprocess(data_file, write_flag=True):
+    data = pd.read_csv(data_file, sep='delimiter', header=None, engine='python')
+    unique = []
+    processed_data = []
+
+    for i in data[0]:
+        transaction = (i.lower()).split(',')
+        processed_data.append(transaction)
+        for item in transaction:
+            if item not in unique:
+                unique.append(item)
+
+    if write_flag:
+        processed_df = pd.DataFrame(processed_data)
+        processed_df.to_csv('prcessed_groceries.csv', header=None, index=False)
+    unique.sort()
+    #print(unique)
+    return unique
