@@ -35,57 +35,6 @@ def process_dataset(path,store=False):
     return ItemFrame,unique_sets
 
 print(len(process_dataset('groceries.csv')[1]))
-"""   
-    
-class Node:
-    def __init__(self, dataval=None):
-        self.dataval = dataval
-        self.nextval = None
-        
-class SLinkedList:
-    def __init__(self):
-        self.headval = None
-
-    def listprint(self):
-        printval = self.headval
-        while printval is not None:
-            print (printval.dataval)
-            printval = printval.nextval
-
-list = SLinkedList()
-list.headval = Node([0])
-e2 = Node("Tue")
-e3 = Node("Wed")
-
-row=itemsets[0]
-len(row["ready soups"])
-# Link first Node to second node
-list.headval.nextval = e2
-
-# Link second Node to third node
-e2.nextval = e3
-
-list.listprint()
-
-
-
-
-
-class Tree:
-    def __init__(self):
-        self.left = None
-        self.right = None
-        self.data = None
-        
-
-
-root = Tree()
-root.data = "root"
-root.left = Tree()
-root.left.data = "left"
-root.right = Tree()
-root.right.data = "right"
-"""
 
 class Node:
     def __init__(self,value,parent=None):
@@ -134,6 +83,9 @@ class FPTree:
             self.unique_items[transaction[0]].append(newNode)
             self.insert_recurse(node.children[transaction[0]],transaction[1:])
     def print_nodes(self):
+        # FOR NOW....
+        # prints the values of the nodes within the tree
+        # later version, it will print the entire tree in inorder.
         for key in self.unique_items_list:
             for node in self.unique_items[key]:
                 print(node.value,node.count,node.parent)
