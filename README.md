@@ -10,7 +10,7 @@ The apriori algorithm has been implemented in Python3 and is contained in the **
 3. ***closed_freq_itemset_gen()***: Generates closed frequent itemsets  from the given frequent itemsets.
 4. ***rule_generation***: Generates the association rules for the frequent itemsets for some given minimum confidence.
 
-The current implementation might ocassionally crash while generating association rules. This is due to the fact that an example itemset *(i, j)* is not similar to *(j, i)* and while performing comparision operationd during rule generation will throw an exception.
+The current implementation might ocassionally crash while generating association rules. This is due to the fact that an example itemset *(i, j)* is not similar to *(j, i)* and while performing comparision operations during rule generation, this will throw an exception.
 
 The current implementation makes use of thread pools to try and decrease computation costs.
 
