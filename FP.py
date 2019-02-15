@@ -93,8 +93,9 @@ class FPTree:
         
 
 if __name__ == "__main__":
+    # dummy code
     lol = Node("1",None)
-    tree = FPTree(["1","2","3","4","5"])
+    tree = FPTree(["1","2","3","4","5"]) # No. of unique items is the parameter
     tree.insert(["1","2","3"])
     tree.insert(["1","4","5"])
     tree.insert(["2","4","5"])
