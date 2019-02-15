@@ -34,7 +34,6 @@ def process_dataset(path,store=False):
         ItemFrame.to_csv('sorted_processed_groceries.csv', header=None, index=False)
     return ItemFrame,unique_sets
 
-print(len(process_dataset('groceries.csv')[1]))
 
 class Node:
     def __init__(self,value,parent=None):
@@ -43,6 +42,7 @@ class Node:
             assert isinstance(parent,Node)
         self.value = value
         self.parent = parent
+        self.next_node = None
         self.count = 0
         self.temp_count = 0 # When doing the subtree selection
         self.children = {}  # KEY = string, value = pointer
@@ -52,8 +52,10 @@ class Node:
 class FPTree:
     def __init__(self,unique_items):
         self.root = Node('None') 
-        self.unique_items = {unique_item : [] for unique_item in unique_items}
-        self.unique_items_list = unique_items
+        self.unique_items = {unique_item : [] for unique_item in unique_items.keys()}
+        self.itemset_counts = {unique_item : 0 for unique_item in unique_items.keys()}
+        self.unique_items_list = unique_items.keys()
+        self.items_with_support = unique_items
 
     def insert(self,transaction):
         # check if the root has the corresponding child or not,
@@ -63,11 +65,15 @@ class FPTree:
         # if not, create the child and recurse
             newNode = Node(transaction[0],self.root)
             self.root.children[transaction[0]] = newNode
+            previous_occurrences = self.unique_items[transaction[0]]
+            if len(previous_occurrences) > 0:
+                previous_occurrences[-1].next_node = newNode
             self.unique_items[transaction[0]].append(newNode)
             self.insert_recurse(self.root.children[transaction[0]],transaction[1:])
         
     def insert_recurse(self,node,transaction):
         node.count += 1
+        self.itemset_counts[node.value] += 1
         # does the depth traversal of the tree and inserts the node
         # invariant: the transaction contains the NEXT item to be traversed 
         # if the item does not exit, then return
@@ -80,6 +86,10 @@ class FPTree:
             # if not then create that child and then recurse
             newNode = Node(transaction[0],node)
             node.children[transaction[0]] = newNode 
+            previous_occurrences = self.unique_items[transaction[0]]
+            # print('lite ',previous_occurrences)
+            if len(previous_occurrences) > 0:
+                previous_occurrences[-1].next_node = newNode
             self.unique_items[transaction[0]].append(newNode)
             self.insert_recurse(node.children[transaction[0]],transaction[1:])
     def print_nodes(self):
@@ -88,16 +98,18 @@ class FPTree:
         # later version, it will print the entire tree in inorder.
         for key in self.unique_items_list:
             for node in self.unique_items[key]:
-                print(node.value,node.count,node.parent)
+                print(node.value,node.count,node.parent,node.next_node)
+    def print_supports(self):
+        print(self.itemset_counts)
         
         
 
 if __name__ == "__main__":
-    # dummy code
-    lol = Node("1",None)
-    tree = FPTree(["1","2","3","4","5"]) # No. of unique items is the parameter
-    tree.insert(["1","2","3"])
-    tree.insert(["1","4","5"])
-    tree.insert(["2","4","5"])
-    tree.insert(["2","4","1"])
+    data,unique_items = process_dataset('groceries.csv')
+    tree = FPTree(unique_items)
     tree.print_nodes()
+    data = pd.Series.tolist(data)
+    
+    for row in data:
+        tree.insert([x for x in row if x is not None])
+    tree.print_supports()
