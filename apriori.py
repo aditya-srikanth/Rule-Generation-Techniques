@@ -16,6 +16,11 @@ class Apriroi_Algorithm():
     @Author: Naren Surampudi
     '''
 
+    def __init__(self):
+        self.DEFAULT_DATA = "test_data.csv"   # Default dataset to use.
+        self.MIN_SUPPORT = 2   # Default minimum support for above dataset.
+        self.MIN_CONFIDENCE = 0.5   # Default minimum confidence for above dataset.
+
     def freq_itemset_gen(self, freq_prev_set, groceries_list, set_len, min_support):
         '''
         This function generates the frequent itemsets present in a set of transactions by
@@ -32,11 +37,13 @@ class Apriroi_Algorithm():
         '''
         new_itemset = {}
         print("Generating frequent itemsets for order " + str(set_len) + "...")
-
+        # This nested for loop snippet here generates all the possible itemsets
+        # possible from the previous generation of frequent itemsets. Newly
+        # generaterd itemsets are assigned a value of zero.
         for item in freq_prev_set:
             for sec_item in freq_prev_set:
                 if item != sec_item:
-                    if set_len  == 2:
+                    if set_len == 2:
                         new_tuple = tuple(set([item]).union(set([sec_item])))
                         if sorted(new_tuple) not in sorted(tuple(new_itemset.keys())) and len(new_tuple) == set_len:
                             new_itemset[new_tuple] = 0
@@ -44,7 +51,7 @@ class Apriroi_Algorithm():
                         new_tuple = tuple(set(list(item)).union(set(list(sec_item))))
                         if sorted(new_tuple) not in sorted(tuple(new_itemset.keys())) and len(new_tuple) == set_len:
                             new_itemset[new_tuple] = 0
-
+        # Counting of itemsets taking place here.
         for g_list in groceries_list:
             for new_key in new_itemset.keys():
                 if set(g_list).intersection(set(new_key)) == set(new_key):
@@ -52,7 +59,8 @@ class Apriroi_Algorithm():
 
         freq_new_set = {}
         non_freq_itemset = {}
-
+        # Frequent itemsets generated according by evaluating against user defined
+        # minimum support.
         for new_key in new_itemset.keys():
             if new_itemset[new_key] >= min_support:
                 freq_new_set[new_key] = new_itemset[new_key]
@@ -75,13 +83,17 @@ class Apriroi_Algorithm():
 
         max_freq_transaction = int(max(freq_itemsets.keys()))
         min_freq_transaction = int(min(freq_itemsets.keys()))
-
+        # Candidate itemsets will only be generated if the longest frequent transaction
+        # is smaller than the largest transaction in the database. Transactions whose
+        # length is more than 2 will be considered.
         if max_freq_transaction < max_len:
             for transaction_len in range(2, max_freq_transaction):
                 if transaction_len + 1 <= max_freq_transaction:
                     current_level = freq_itemsets[str(transaction_len)].keys()
                     next_level = freq_itemsets[str(transaction_len + 1)].keys()
                     for itemset in current_level:
+                        # Flag to check itemset in current level is possible subset
+                        # in next level
                         flag = 0
                         for n_itemset in next_level:
                             if set(list(itemset)).issubset(set(list(n_itemset))):
@@ -109,7 +121,9 @@ class Apriroi_Algorithm():
 
         max_freq_transaction = int(max(freq_itemsets.keys()))
         min_freq_transaction = int(min(freq_itemsets.keys()))
-
+        # Candidate itemsets will only be generated if the longest frequent transaction
+        # is smaller than the largest transaction in the database. Transactions whose
+        # length is more than 2 will be considered.
         if max_freq_transaction < max_len:
             for transaction_len in range(2, max_freq_transaction):
                 if transaction_len + 1 <= max_freq_transaction:
@@ -144,10 +158,12 @@ class Apriroi_Algorithm():
                 set_len = len(itemset)
                 if int(key) > 1:
                     for consequent_len in range(1, set_len):
+                        # Getting all possible combinations of the itemsets-consequents
                         itemset_subsets = set(itertools.combinations(set(list(itemset)), (set_len - consequent_len)))
                         consequents = set(itertools.combinations(set(list(itemset)), consequent_len))
                         for itemset_subset in itemset_subsets:
                             for consequent in consequents:
+                                # Check if the pairs occur in the database.
                                 set_union = set(list(itemset_subset)).union(set(list(consequent)))
                                 if set_union == set(list(itemset)) and len(set_union) == len(itemset):
                                     if len(itemset_subset) == 1:
@@ -178,15 +194,16 @@ class Apriroi_Algorithm():
         return max_len
 
 if __name__ == "__main__":
+    apriori = Apriroi_Algorithm()
+
     parser = argparse.ArgumentParser(description='take input')
-    parser.add_argument('data_path', help='path of file to process', type=str)
-    parser.add_argument('min_support', help='minimum support', type=int)
-    parser.add_argument('min_confidence', help='minimum confidence', type=float)
+    parser.add_argument('data_path', help='path of file to process', default=apriori.DEFAULT_DATA, type=str)
+    parser.add_argument('min_support', help='minimum support', default=apriori.MIN_SUPPORT, type=int)
+    parser.add_argument('min_confidence', help='minimum confidence', default=apriori.MIN_CONFIDENCE, type=float)
     args = parser.parse_args()
     data_file = vars(args)['data_path']
 
     groceries_data = pd.read_csv(data_file, sep='delimiter', header=None, engine='python')
-    apriori = Apriroi_Algorithm()
 
     temp_list = groceries_data[0].tolist()
     groceries_list = []
@@ -208,8 +225,6 @@ if __name__ == "__main__":
                     single_itemset[grocery] = single_itemset[grocery] + 1
                 else:
                     single_itemset[grocery] = 1
-
-    min_support_vals = [0.1, 0.2, 0.3, 0.4]
 
     min_support = vars(args)['min_support']
     min_confidence = vars(args)['min_confidence']
