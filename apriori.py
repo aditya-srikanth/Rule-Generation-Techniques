@@ -95,6 +95,37 @@ class Apriroi_Algorithm():
 
         return maximal_itemsets
 
+    def closed_freq_itemset_gen(self, freq_itemsets, max_len):
+        '''
+        This function generates the closed frequent itemsets from the generated frequent
+        itemsets
+
+        @type freq_itemsets: dictionary
+        @param freq_itemsets: The complete set of frequent itemsets.
+        @type max_len: int
+        @param max_len: The maximum length of a transaction in the dataset.
+        '''
+        closed_freq_itemsets = {}
+
+        max_freq_transaction = int(max(freq_itemsets.keys()))
+        min_freq_transaction = int(min(freq_itemsets.keys()))
+
+        if max_freq_transaction < max_len:
+            for transaction_len in range(2, max_freq_transaction):
+                if transaction_len + 1 <= max_freq_transaction:
+                    current_level = freq_itemsets[str(transaction_len)].keys()
+                    next_level = freq_itemsets[str(transaction_len + 1)].keys()
+                    for itemset in current_level:
+                        flag = 0
+                        for n_itemset in next_level:
+                            if freq_itemsets[str(transaction_len)][itemset] < freq_itemsets[str(transaction_len + 1)][n_itemset]:
+                                flag = 1
+                                break
+                        if flag == 0:
+                            closed_freq_itemsets[itemset] = freq_itemsets[str(transaction_len)][itemset]
+
+        return closed_freq_itemsets
+
     def rule_generation(self, freq_itemsets, min_confidence):
         '''
         This function generates association rules from the generated frequent itemsets by
@@ -237,6 +268,20 @@ if __name__ == "__main__":
     try:
         start = time.clock()
 
+        closed_freq_itemsets = (pool.apply_async(apriori.closed_freq_itemset_gen, (freq_itemsets, max_len))).get()
+
+        end = time.clock()
+        closed_gen_time = end - start
+
+        print("\nClosed frequent itemsets with support:")
+        pprint(closed_freq_itemsets)
+    except:
+        print("\nError occured during closed frequent itemsets generation. Try running again.")
+        closed_gen_time = 0
+
+    try:
+        start = time.clock()
+
         association_rules = (pool.apply_async(apriori.rule_generation, (freq_itemsets, min_confidence))).get()
 
         end = time.clock()
@@ -251,4 +296,5 @@ if __name__ == "__main__":
     print("\nTimings:")
     print("Frequent itmesets generation: " + str(freq_gen_time))
     print("Maximal itemsets generation: " + str(max_gen_time))
+    print("Closed frequent itemsets generation: " + str(closed_gen_time))
     print("Association rules generation: " + str(rule_gen_time))
