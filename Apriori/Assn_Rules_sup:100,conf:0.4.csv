@@ -1,0 +1,62 @@
+LHS,LHS itemset count,--->,RHS,RHS itemset count,Confidence
+margarine,576,--->,whole milk,2513,0.4131944444444444
+tropical fruit,1032,--->,whole milk,2513,0.40310077519379844
+yogurt,1372,--->,whole milk,2513,0.40160349854227406
+cream cheese,390,--->,whole milk,2513,0.4153846153846154
+butter,545,--->,whole milk,2513,0.4972477064220184
+white bread,414,--->,whole milk,2513,0.4057971014492754
+curd,524,--->,whole milk,2513,0.4904580152671756
+beef,516,--->,whole milk,2513,0.4050387596899225
+chicken,422,--->,whole milk,2513,0.4099526066350711
+sugar,333,--->,whole milk,2513,0.4444444444444444
+butter milk,275,--->,whole milk,2513,0.41454545454545455
+root vegetables,1072,--->,whole milk,2513,0.44869402985074625
+hamburger meat,327,--->,whole milk,2513,0.4434250764525994
+whipped/sour cream,705,--->,whole milk,2513,0.44964539007092197
+domestic eggs,624,--->,whole milk,2513,0.47275641025641024
+ham,256,--->,whole milk,2513,0.44140625
+oil,276,--->,whole milk,2513,0.40217391304347827
+frozen vegetables,473,--->,whole milk,2513,0.4249471458773784
+sliced cheese,241,--->,whole milk,2513,0.43983402489626555
+chicken,422,--->,other vegetables,1903,0.41706161137440756
+root vegetables,1072,--->,other vegetables,1903,0.43470149253731344
+hamburger meat,327,--->,other vegetables,1903,0.41590214067278286
+whipped/sour cream,705,--->,other vegetables,1903,0.40283687943262414
+onions,305,--->,other vegetables,1903,0.45901639344262296
+"('yogurt', 'citrus fruit')",213,--->,whole milk,2513,0.47417840375586856
+"('citrus fruit', 'yogurt')",213,--->,whole milk,2513,0.47417840375586856
+"('whole milk', 'citrus fruit')",300,--->,other vegetables,1903,0.4266666666666667
+"('other vegetables', 'citrus fruit')",284,--->,whole milk,2513,0.4507042253521127
+"('root vegetables', 'citrus fruit')",174,--->,other vegetables,1903,0.5862068965517241
+"('tropical fruit', 'yogurt')",288,--->,whole milk,2513,0.5173611111111112
+"('tropical fruit', 'yogurt')",288,--->,other vegetables,1903,0.4201388888888889
+"('other vegetables', 'tropical fruit')",353,--->,whole milk,2513,0.47592067988668557
+"('whole milk', 'tropical fruit')",416,--->,other vegetables,1903,0.40384615384615385
+"('rolls/buns', 'tropical fruit')",242,--->,whole milk,2513,0.4462809917355372
+"('root vegetables', 'tropical fruit')",207,--->,whole milk,2513,0.5700483091787439
+"('root vegetables', 'tropical fruit')",207,--->,other vegetables,1903,0.5845410628019324
+"('other vegetables', 'yogurt')",427,--->,whole milk,2513,0.5128805620608899
+"('rolls/buns', 'yogurt')",338,--->,whole milk,2513,0.4526627218934911
+"('root vegetables', 'yogurt')",254,--->,whole milk,2513,0.562992125984252
+"('whipped/sour cream', 'yogurt')",204,--->,whole milk,2513,0.5245098039215687
+"('root vegetables', 'yogurt')",254,--->,other vegetables,1903,0.5
+"('whipped/sour cream', 'yogurt')",204,--->,other vegetables,1903,0.49019607843137253
+"('other vegetables', 'pip fruit')",257,--->,whole milk,2513,0.5175097276264592
+"('whole milk', 'pip fruit')",296,--->,other vegetables,1903,0.44932432432432434
+"('other vegetables', 'butter')",197,--->,whole milk,2513,0.5736040609137056
+"('butter', 'whole milk')",271,--->,other vegetables,1903,0.41697416974169743
+"('other vegetables', 'rolls/buns')",419,--->,whole milk,2513,0.4200477326968974
+"('other vegetables', 'bottled water')",244,--->,whole milk,2513,0.4344262295081967
+"('other vegetables', 'soda')",322,--->,whole milk,2513,0.4254658385093168
+"('other vegetables', 'fruit/vegetable juice')",207,--->,whole milk,2513,0.4975845410628019
+"('other vegetables', 'pastry')",222,--->,whole milk,2513,0.46846846846846846
+"('other vegetables', 'root vegetables')",466,--->,whole milk,2513,0.4892703862660944
+"('root vegetables', 'whole milk')",481,--->,other vegetables,1903,0.47401247401247404
+"('other vegetables', 'pork')",213,--->,whole milk,2513,0.4694835680751174
+"('pork', 'whole milk')",218,--->,other vegetables,1903,0.45871559633027525
+"('other vegetables', 'whipped/sour cream')",284,--->,whole milk,2513,0.5070422535211268
+"('whole milk', 'whipped/sour cream')",317,--->,other vegetables,1903,0.45425867507886436
+"('other vegetables', 'domestic eggs')",219,--->,whole milk,2513,0.5525114155251142
+"('domestic eggs', 'whole milk')",295,--->,other vegetables,1903,0.4101694915254237
+"('rolls/buns', 'root vegetables')",239,--->,whole milk,2513,0.5230125523012552
+"('rolls/buns', 'root vegetables')",239,--->,other vegetables,1903,0.502092050209205

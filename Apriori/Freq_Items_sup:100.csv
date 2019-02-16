@@ -1,0 +1,351 @@
+Frequent Itemset,Support
+citrus fruit,814
+semi-finished bread,174
+margarine,576
+tropical fruit,1032
+yogurt,1372
+coffee,571
+whole milk,2513
+pip fruit,744
+cream cheese,390
+other vegetables,1903
+condensed milk,101
+long life bakery product,368
+butter,545
+rolls/buns,1809
+UHT-milk,329
+bottled beer,792
+potted plants,170
+white bread,414
+bottled water,1087
+chocolate,488
+curd,524
+flour,171
+dishes,173
+beef,516
+frankfurter,580
+soda,1715
+chicken,422
+sugar,333
+fruit/vegetable juice,711
+newspapers,785
+packaged fruit/vegetables,128
+specialty bar,269
+butter milk,275
+pastry,875
+processed cheese,163
+detergent,189
+root vegetables,1072
+frozen dessert,106
+salty snack,372
+waffles,378
+candy,294
+canned beer,764
+sausage,924
+brown bread,638
+shopping bags,969
+beverages,256
+hamburger meat,327
+hygiene articles,324
+napkins,515
+pork,567
+berries,327
+whipped/sour cream,705
+grapes,220
+dessert,365
+domestic eggs,624
+spread cheese,110
+misc. beverages,279
+hard cheese,241
+cat food,229
+ham,256
+baking powder,174
+pickled vegetables,176
+oil,276
+chewing gum,207
+ice cream,246
+frozen vegetables,473
+canned fish,148
+seasonal products,140
+red/blush wine,189
+specialty chocolate,299
+flower (seeds),102
+salt,106
+frozen meals,279
+canned vegetables,106
+onions,305
+herbs,160
+white wine,187
+sliced cheese,241
+pasta,148
+cling film/bags,112
+soft cheese,168
+cake bar,130
+frozen fish,115
+dish cleaner,103
+meat,254
+mustard,118
+liquor,109
+roll products,101
+"('tropical fruit', 'citrus fruit')",196
+"('yogurt', 'citrus fruit')",213
+"('whole milk', 'citrus fruit')",300
+"('pip fruit', 'citrus fruit')",136
+"('other vegetables', 'citrus fruit')",284
+"('rolls/buns', 'citrus fruit')",165
+"('bottled water', 'citrus fruit')",133
+"('soda', 'citrus fruit')",126
+"('fruit/vegetable juice', 'citrus fruit')",102
+"('root vegetables', 'citrus fruit')",174
+"('sausage', 'citrus fruit')",111
+"('whipped/sour cream', 'citrus fruit')",107
+"('domestic eggs', 'citrus fruit')",102
+"('margarine', 'yogurt')",140
+"('whole milk', 'margarine')",238
+"('other vegetables', 'margarine')",194
+"('rolls/buns', 'margarine')",145
+"('bottled water', 'margarine')",101
+"('soda', 'margarine')",100
+"('root vegetables', 'margarine')",109
+"('tropical fruit', 'yogurt')",288
+"('whole milk', 'tropical fruit')",416
+"('tropical fruit', 'pip fruit')",201
+"('other vegetables', 'tropical fruit')",353
+"('rolls/buns', 'tropical fruit')",242
+"('bottled water', 'tropical fruit')",182
+"('tropical fruit', 'curd')",101
+"('soda', 'tropical fruit')",205
+"('fruit/vegetable juice', 'tropical fruit')",135
+"('newspapers', 'tropical fruit')",116
+"('pastry', 'tropical fruit')",130
+"('root vegetables', 'tropical fruit')",207
+"('sausage', 'tropical fruit')",137
+"('brown bread', 'tropical fruit')",105
+"('tropical fruit', 'shopping bags')",133
+"('whipped/sour cream', 'tropical fruit')",136
+"('domestic eggs', 'tropical fruit')",112
+"('citrus fruit', 'yogurt')",213
+"('whole milk', 'yogurt')",551
+"('pip fruit', 'yogurt')",177
+"('cream cheese', 'yogurt')",122
+"('other vegetables', 'yogurt')",427
+"('butter', 'yogurt')",144
+"('rolls/buns', 'yogurt')",338
+"('bottled water', 'yogurt')",226
+"('curd', 'yogurt')",170
+"('beef', 'yogurt')",115
+"('frankfurter', 'yogurt')",110
+"('soda', 'yogurt')",269
+"('fruit/vegetable juice', 'yogurt')",184
+"('newspapers', 'yogurt')",151
+"('pastry', 'yogurt')",174
+"('root vegetables', 'yogurt')",254
+"('sausage', 'yogurt')",193
+"('brown bread', 'yogurt')",143
+"('shopping bags', 'yogurt')",150
+"('napkins', 'yogurt')",121
+"('berries', 'yogurt')",104
+"('whipped/sour cream', 'yogurt')",204
+"('domestic eggs', 'yogurt')",141
+"('frozen vegetables', 'yogurt')",122
+"('coffee', 'whole milk')",184
+"('coffee', 'other vegetables')",132
+"('coffee', 'rolls/buns')",108
+"('whole milk', 'pip fruit')",296
+"('whole milk', 'cream cheese')",162
+"('other vegetables', 'whole milk')",736
+"('whole milk', 'long life bakery product')",133
+"('butter', 'whole milk')",271
+"('rolls/buns', 'whole milk')",557
+"('whole milk', 'bottled beer')",201
+"('whole milk', 'white bread')",168
+"('bottled water', 'whole milk')",338
+"('whole milk', 'chocolate')",164
+"('whole milk', 'curd')",257
+"('beef', 'whole milk')",209
+"('frankfurter', 'whole milk')",202
+"('soda', 'whole milk')",394
+"('chicken', 'whole milk')",173
+"('sugar', 'whole milk')",148
+"('fruit/vegetable juice', 'whole milk')",262
+"('whole milk', 'newspapers')",269
+"('butter milk', 'whole milk')",114
+"('pastry', 'whole milk')",327
+"('root vegetables', 'whole milk')",481
+"('salty snack', 'whole milk')",110
+"('whole milk', 'waffles')",125
+"('sausage', 'whole milk')",294
+"('brown bread', 'whole milk')",248
+"('whole milk', 'shopping bags')",241
+"('whole milk', 'hamburger meat')",145
+"('hygiene articles', 'whole milk')",126
+"('whole milk', 'napkins')",194
+"('pork', 'whole milk')",218
+"('berries', 'whole milk')",116
+"('whipped/sour cream', 'whole milk')",317
+"('dessert', 'whole milk')",135
+"('domestic eggs', 'whole milk')",295
+"('ham', 'whole milk')",113
+"('whole milk', 'oil')",111
+"('frozen vegetables', 'whole milk')",201
+"('onions', 'whole milk')",119
+"('whole milk', 'sliced cheese')",106
+"('other vegetables', 'pip fruit')",257
+"('rolls/buns', 'pip fruit')",137
+"('bottled water', 'pip fruit')",104
+"('soda', 'pip fruit')",131
+"('pastry', 'pip fruit')",105
+"('root vegetables', 'pip fruit')",153
+"('sausage', 'pip fruit')",106
+"('yogurt', 'cream cheese')",122
+"('other vegetables', 'cream cheese')",135
+"('other vegetables', 'coffee')",132
+"('other vegetables', 'long life bakery product')",105
+"('other vegetables', 'butter')",197
+"('other vegetables', 'rolls/buns')",419
+"('other vegetables', 'bottled beer')",159
+"('other vegetables', 'white bread')",135
+"('other vegetables', 'bottled water')",244
+"('other vegetables', 'chocolate')",125
+"('other vegetables', 'curd')",169
+"('other vegetables', 'beef')",194
+"('other vegetables', 'frankfurter')",162
+"('other vegetables', 'soda')",322
+"('other vegetables', 'chicken')",176
+"('other vegetables', 'sugar')",106
+"('other vegetables', 'fruit/vegetable juice')",207
+"('other vegetables', 'newspapers')",190
+"('other vegetables', 'butter milk')",102
+"('other vegetables', 'pastry')",222
+"('other vegetables', 'root vegetables')",466
+"('other vegetables', 'salty snack')",106
+"('other vegetables', 'sausage')",265
+"('other vegetables', 'brown bread')",184
+"('other vegetables', 'shopping bags')",228
+"('other vegetables', 'hamburger meat')",136
+"('other vegetables', 'napkins')",142
+"('other vegetables', 'pork')",213
+"('other vegetables', 'berries')",101
+"('other vegetables', 'whipped/sour cream')",284
+"('other vegetables', 'dessert')",114
+"('other vegetables', 'domestic eggs')",219
+"('other vegetables', 'frozen vegetables')",175
+"('other vegetables', 'onions')",140
+"('rolls/buns', 'butter')",132
+"('root vegetables', 'butter')",127
+"('butter', 'whipped/sour cream')",100
+"('rolls/buns', 'bottled beer')",134
+"('rolls/buns', 'bottled water')",238
+"('rolls/buns', 'chocolate')",116
+"('rolls/buns', 'beef')",134
+"('rolls/buns', 'frankfurter')",189
+"('rolls/buns', 'soda')",377
+"('rolls/buns', 'fruit/vegetable juice')",143
+"('rolls/buns', 'newspapers')",194
+"('rolls/buns', 'pastry')",206
+"('rolls/buns', 'root vegetables')",239
+"('rolls/buns', 'canned beer')",111
+"('rolls/buns', 'sausage')",301
+"('rolls/buns', 'brown bread')",124
+"('rolls/buns', 'shopping bags')",192
+"('rolls/buns', 'napkins')",115
+"('rolls/buns', 'pork')",111
+"('rolls/buns', 'whipped/sour cream')",144
+"('rolls/buns', 'domestic eggs')",154
+"('frozen vegetables', 'rolls/buns')",100
+"('bottled water', 'bottled beer')",155
+"('soda', 'bottled beer')",167
+"('soda', 'white bread')",101
+"('bottled water', 'soda')",285
+"('fruit/vegetable juice', 'bottled water')",140
+"('bottled water', 'newspapers')",111
+"('root vegetables', 'bottled water')",154
+"('sausage', 'bottled water')",118
+"('bottled water', 'shopping bags')",108
+"('soda', 'chocolate')",133
+"('yogurt', 'curd')",170
+"('root vegetables', 'curd')",107
+"('whipped/sour cream', 'curd')",103
+"('whole milk', 'beef')",209
+"('root vegetables', 'beef')",171
+"('soda', 'frankfurter')",111
+"('root vegetables', 'frankfurter')",100
+"('frankfurter', 'soda')",111
+"('fruit/vegetable juice', 'soda')",181
+"('soda', 'newspapers')",144
+"('pastry', 'soda')",207
+"('root vegetables', 'soda')",183
+"('canned beer', 'soda')",136
+"('sausage', 'soda')",239
+"('brown bread', 'soda')",124
+"('soda', 'shopping bags')",242
+"('soda', 'napkins')",118
+"('pork', 'soda')",117
+"('soda', 'whipped/sour cream')",114
+"('domestic eggs', 'soda')",122
+"('chicken', 'root vegetables')",107
+"('root vegetables', 'fruit/vegetable juice')",118
+"('fruit/vegetable juice', 'shopping bags')",105
+"('tropical fruit', 'newspapers')",116
+"('root vegetables', 'newspapers')",113
+"('butter milk', 'other vegetables')",102
+"('pastry', 'rolls/buns')",206
+"('pastry', 'root vegetables')",108
+"('pastry', 'sausage')",123
+"('pastry', 'shopping bags')",117
+"('fruit/vegetable juice', 'root vegetables')",118
+"('sausage', 'root vegetables')",147
+"('root vegetables', 'brown bread')",100
+"('root vegetables', 'shopping bags')",126
+"('root vegetables', 'pork')",134
+"('root vegetables', 'whipped/sour cream')",168
+"('domestic eggs', 'root vegetables')",141
+"('frozen vegetables', 'root vegetables')",114
+"('whole milk', 'salty snack')",110
+"('canned beer', 'shopping bags')",112
+"('sausage', 'rolls/buns')",301
+"('sausage', 'pastry')",123
+"('sausage', 'brown bread')",105
+"('sausage', 'shopping bags')",154
+"('soda', 'brown bread')",124
+"('soda', 'pork')",117
+"('whole milk', 'whipped/sour cream')",317
+"('whole milk', 'dessert')",135
+"('domestic eggs', 'rolls/buns')",154
+"('whole milk', 'ham')",113
+"('frozen vegetables', 'other vegetables')",175
+"('whole milk', 'onions')",119
+"('whole milk', 'citrus fruit', 'yogurt')",101
+"('whole milk', 'yogurt', 'citrus fruit')",101
+"('other vegetables', 'whole milk', 'citrus fruit')",128
+"('other vegetables', 'root vegetables', 'citrus fruit')",102
+"('whole milk', 'tropical fruit', 'yogurt')",149
+"('other vegetables', 'tropical fruit', 'yogurt')",121
+"('other vegetables', 'whole milk', 'tropical fruit')",168
+"('rolls/buns', 'whole milk', 'tropical fruit')",108
+"('root vegetables', 'whole milk', 'tropical fruit')",118
+"('other vegetables', 'root vegetables', 'tropical fruit')",121
+"('other vegetables', 'whole milk', 'yogurt')",219
+"('rolls/buns', 'whole milk', 'yogurt')",153
+"('soda', 'whole milk', 'yogurt')",103
+"('root vegetables', 'whole milk', 'yogurt')",143
+"('whipped/sour cream', 'whole milk', 'yogurt')",107
+"('other vegetables', 'rolls/buns', 'yogurt')",113
+"('other vegetables', 'root vegetables', 'yogurt')",127
+"('other vegetables', 'whipped/sour cream', 'yogurt')",100
+"('whole milk', 'whipped/sour cream', 'yogurt')",107
+"('other vegetables', 'whole milk', 'pip fruit')",133
+"('other vegetables', 'butter', 'whole milk')",113
+"('other vegetables', 'rolls/buns', 'whole milk')",176
+"('other vegetables', 'bottled water', 'whole milk')",106
+"('other vegetables', 'soda', 'whole milk')",137
+"('other vegetables', 'fruit/vegetable juice', 'whole milk')",103
+"('other vegetables', 'pastry', 'whole milk')",104
+"('other vegetables', 'root vegetables', 'whole milk')",228
+"('other vegetables', 'sausage', 'whole milk')",100
+"('other vegetables', 'pork', 'whole milk')",100
+"('other vegetables', 'whole milk', 'whipped/sour cream')",144
+"('other vegetables', 'domestic eggs', 'whole milk')",121
+"('rolls/buns', 'root vegetables', 'whole milk')",125
+"('other vegetables', 'rolls/buns', 'root vegetables')",120
+"('whipped/sour cream', 'whole milk', 'other vegetables')",144
