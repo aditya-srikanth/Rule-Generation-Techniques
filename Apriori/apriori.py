@@ -321,7 +321,22 @@ if __name__ == "__main__":
         col_names = ['LHS', 'LHS itemset count', '--->', 'RHS', 'RHS itemset count', 'Confidence']
         assn_rules_df = pd.DataFrame(columns=col_names)
 
-        #freq_itemsets_df.to_csv(file_name, index=False, encoding='utf-8')
+        for itemsets in association_rules.keys():
+            LHS = itemsets[0]
+            if isinstance(LHS, str):
+                LHS_count = freq_itemsets['1'][LHS]
+            else:
+                LHS_count = freq_itemsets[str(len(LHS))][LHS]
+            RHS = itemsets[1]
+            if isinstance(RHS, str):
+                RHS_count = freq_itemsets['1'][RHS]
+            else:
+                RHS_count = freq_itemsets[str(len(RHS))][RHS]
+            confidence = association_rules[itemsets]
+            data_list = [LHS, LHS_count, '--->', RHS, RHS_count, confidence]
+            assn_rules_df.loc[len(assn_rules_df)] = data_list
+
+        assn_rules_df.to_csv(file_name, index=False, encoding='utf-8')
 
     except:
         print("\nError occured during association rules generation. Try running again.")
@@ -332,21 +347,3 @@ if __name__ == "__main__":
     print("Maximal itemsets generation: " + str(max_gen_time))
     print("Closed frequent itemsets generation: " + str(closed_gen_time))
     print("Association rules generation: " + str(rule_gen_time))
-
-    '''
-    for itemsets in association_rules.keys():
-        LHS = itemsets[0]
-        if len([LHS]) == 1:   # change condition to check if tuple or not
-            LHS_count = freq_itemsets['1'][LHS]
-        else:
-            LHS_count = freq_itemsets[str(len(LHS))][LHS]
-        RHS = itemsets[1]
-        if len([RHS]) == 1:   # change condition to check if tuple or not
-            RHS_count = freq_itemsets['1'][RHS]
-        else:
-            RHS_count = freq_itemsets[str(len(RHS))][RHS]
-        confidence = association_rules[itemsets]
-        data_list = [LHS, LHS_count, '--->', RHS, RHS_count, confidence]
-        assn_rules_df.loc[len(assn_rules_df)] = data_list
-
-    print(assn_rules_df)'''
