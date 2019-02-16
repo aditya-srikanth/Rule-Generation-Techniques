@@ -1,0 +1,126 @@
+Frequent Itemset,Support
+citrus fruit,814
+margarine,576
+tropical fruit,1032
+yogurt,1372
+coffee,571
+whole milk,2513
+pip fruit,744
+cream cheese,390
+other vegetables,1903
+long life bakery product,368
+butter,545
+rolls/buns,1809
+UHT-milk,329
+bottled beer,792
+white bread,414
+bottled water,1087
+chocolate,488
+curd,524
+beef,516
+frankfurter,580
+soda,1715
+chicken,422
+sugar,333
+fruit/vegetable juice,711
+newspapers,785
+specialty bar,269
+butter milk,275
+pastry,875
+root vegetables,1072
+salty snack,372
+waffles,378
+candy,294
+canned beer,764
+sausage,924
+brown bread,638
+shopping bags,969
+beverages,256
+hamburger meat,327
+hygiene articles,324
+napkins,515
+pork,567
+berries,327
+whipped/sour cream,705
+grapes,220
+dessert,365
+domestic eggs,624
+misc. beverages,279
+hard cheese,241
+cat food,229
+ham,256
+oil,276
+chewing gum,207
+ice cream,246
+frozen vegetables,473
+specialty chocolate,299
+frozen meals,279
+onions,305
+sliced cheese,241
+meat,254
+"('yogurt', 'citrus fruit')",213
+"('whole milk', 'citrus fruit')",300
+"('citrus fruit', 'other vegetables')",284
+"('whole milk', 'margarine')",238
+"('yogurt', 'tropical fruit')",288
+"('whole milk', 'tropical fruit')",416
+"('pip fruit', 'tropical fruit')",201
+"('tropical fruit', 'other vegetables')",353
+"('rolls/buns', 'tropical fruit')",242
+"('tropical fruit', 'soda')",205
+"('root vegetables', 'tropical fruit')",207
+"('whole milk', 'yogurt')",551
+"('yogurt', 'other vegetables')",427
+"('yogurt', 'rolls/buns')",338
+"('yogurt', 'bottled water')",226
+"('yogurt', 'soda')",269
+"('root vegetables', 'yogurt')",254
+"('yogurt', 'whipped/sour cream')",204
+"('whole milk', 'pip fruit')",296
+"('whole milk', 'other vegetables')",736
+"('whole milk', 'butter')",271
+"('whole milk', 'rolls/buns')",557
+"('whole milk', 'bottled beer')",201
+"('whole milk', 'bottled water')",338
+"('whole milk', 'curd')",257
+"('whole milk', 'beef')",209
+"('whole milk', 'frankfurter')",202
+"('whole milk', 'soda')",394
+"('whole milk', 'fruit/vegetable juice')",262
+"('whole milk', 'newspapers')",269
+"('pastry', 'whole milk')",327
+"('root vegetables', 'whole milk')",481
+"('whole milk', 'sausage')",294
+"('whole milk', 'brown bread')",248
+"('shopping bags', 'whole milk')",241
+"('whole milk', 'pork')",218
+"('whole milk', 'whipped/sour cream')",317
+"('whole milk', 'domestic eggs')",295
+"('frozen vegetables', 'whole milk')",201
+"('pip fruit', 'other vegetables')",257
+"('rolls/buns', 'other vegetables')",419
+"('bottled water', 'other vegetables')",244
+"('soda', 'other vegetables')",322
+"('fruit/vegetable juice', 'other vegetables')",207
+"('pastry', 'other vegetables')",222
+"('root vegetables', 'other vegetables')",466
+"('sausage', 'other vegetables')",265
+"('shopping bags', 'other vegetables')",228
+"('pork', 'other vegetables')",213
+"('whipped/sour cream', 'other vegetables')",284
+"('domestic eggs', 'other vegetables')",219
+"('rolls/buns', 'bottled water')",238
+"('rolls/buns', 'soda')",377
+"('pastry', 'rolls/buns')",206
+"('root vegetables', 'rolls/buns')",239
+"('sausage', 'rolls/buns')",301
+"('other vegetables', 'bottled water')",244
+"('soda', 'bottled water')",285
+"('other vegetables', 'soda')",322
+"('bottled water', 'soda')",285
+"('pastry', 'soda')",207
+"('sausage', 'soda')",239
+"('shopping bags', 'soda')",242
+"('brown bread', 'whole milk')",248
+"('whole milk', 'yogurt', 'other vegetables')",219
+"('root vegetables', 'whole milk', 'other vegetables')",228
