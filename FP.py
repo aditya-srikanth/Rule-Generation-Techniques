@@ -4,6 +4,7 @@ import matplotlib as plt
 import csv
 import operator
 from collections import OrderedDict
+from pprint import pprint
 
 def process_dataset(path,min_sup,store=False):
     with open(path) as csv_file:
@@ -31,7 +32,7 @@ def process_dataset(path,min_sup,store=False):
         d = dict(zip(row, l))
 
         sorted_items = sorted(d.items(), key=operator.itemgetter(1), reverse=True)
-        itemsets.append(list((x[0] for x in sorted_items if x[1]>min_sup)))
+        itemsets.append(list((x[0] for x in sorted_items if x[1]>=min_sup)))
     
     for k, v in list(unique_sets.items()):
         if v < min_sup:
@@ -69,7 +70,6 @@ class FPTree:
         self.itemset_counts = {unique_item : 0 for unique_item in unique_items.keys()}
         self.unique_items_list = unique_items.keys()
         self.items_with_support = unique_items
-
     def insert(self,transaction):
         # check if the root has the corresponding child or not
         if len(transaction) <= 0:
@@ -112,78 +112,71 @@ class FPTree:
         # later version, it will print the entire tree in inorder.
         for key in self.unique_items_list:
             for node in self.unique_items[key]:
-                print(node.value,node.count,node.parent,node.next_node)
+                print(node.value,node.count,node.parent,node.temp_count)
     def print_supports(self):
         print(self.itemset_counts)
+    def reset_nodes(self):
+        # FOR NOW....
+        # prints the values of the nodes within the tree
+        # later version, it will print the entire tree in inorder.
+        for key in self.unique_items_list:
+            for node in self.unique_items[key]:
+                node.temp_count = 0
     def get_frequent_itemsets_with_suffix(self,value,minsup_count):
         if value == "None":
-            return []
-        visited_sets = []                                           # contains the frequent itemsets
-        intermediate_itemsets = {}                                  # contains the intermediate itemsets i.e 
-                                                                    # the current frequent itemsets that will be checked with other itemsets
-        intermediate_counts = {}
-        intermediate_itemsets[value] = []
-        intermediate_counts[value] = 0
-        # add the base item's locations in the list
+            return None
+        intermediate_itemsets = {}
+        intermediate_itemsets[(value,)] = 0
         for item in self.unique_items[value]:
-            intermediate_itemsets[value].append(item)
-            intermediate_counts[value] += item.count
-        while len(intermediate_itemsets) > 0:
-            keys = list(intermediate_itemsets.keys())
-            for key in keys:
-                for node in intermediate_itemsets[key]:
-                    if (node.parent.value != "None") and key + ' & '+node.parent.value not in intermediate_itemsets:
-                        intermediate_counts[key + ' & '+node.parent.value] = node.count
-                        intermediate_itemsets[key + ' & '+node.parent.value] = [node.parent]
-                    elif (node.parent.value != "None") and key + ' & '+node.parent.value in intermediate_itemsets:
-                        # print('entered elif')
-                        intermediate_itemsets[key + ' & '+node.parent.value].append(node.parent)
-                        # print(intermediate_counts[key + ' & '+node.parent.value],node.count)
-                        intermediate_counts[key + ' & '+node.parent.value] += node.count
-                        # print(intermediate_counts[key + ' & '+node.parent.value])
-
-                intermediate_itemsets.pop(key,None)
-                visited_sets.append(key)
-            # print('intermediate counts: ',intermediate_counts)
-            temp = {temp_key : count for (temp_key,count) in intermediate_counts.items() if intermediate_counts[temp_key] >= minsup_count}
-            intermediate_counts = temp
-            intermediate_itemsets = {temp_key : intermediate_itemsets[temp_key] for temp_key in intermediate_counts.keys() if temp_key in intermediate_itemsets}
-            # print('temp: ',temp)
-            # break
-        return visited_sets,intermediate_counts
+            key = (item.value,)
+            node = item
+            node.temp_count = node.count
+            intermediate_itemsets[key] += node.count
+            while node.parent.value != "None":
+                key += (node.parent.value,)
+                if key not in intermediate_itemsets.keys():
+                    intermediate_itemsets[key] = node.temp_count
+                    node.parent.temp_count = node.temp_count
+                else:
+                    # print('entered elif')
+                    intermediate_itemsets[key] += node.temp_count
+                    node.parent.temp_count += node.temp_count
+                node = node.parent
+        to_return_itemsets = {key: value for (key,value) in intermediate_itemsets.items() if value >= minsup_count}
+        return to_return_itemsets
     def fp_growth(self,minsup_count):
         # algorithm begins with the lowest support value and gradually goes up
-        frequent_itemsets = []
         counts = {}
         sorted_items = [x[0] for x in sorted(self.items_with_support.items(), key=operator.itemgetter(1), reverse=True)]
         for item in reversed(sorted_items):
-            temp_list,temp_dict = self.get_frequent_itemsets_with_suffix(item,minsup_count)
-            frequent_itemsets += temp_list
-            # print(frequent_itemsets)
+            self.reset_nodes()
+            temp_dict = self.get_frequent_itemsets_with_suffix(item,minsup_count)
             counts.update(temp_dict)
-        return frequent_itemsets,counts
+        return counts
         
         
 
 if __name__ == "__main__":
     min_sup = int(input('enter min-support\n'))
-    data,unique_items = process_dataset('groceries.csv',min_sup)
-    # print(unique_items,type(data))
+    data,unique_items = process_dataset('test_data.csv',min_sup)
+    print(unique_items,type(data))
+    data = pd.Series.tolist(data)
+    pprint(data)
     # unique_items = {}
-    # data = [['2','3','1'],['2','1','5'],['2','3','4'],['3','4','5']]
-    # unique_items['1'] = 2
-    # unique_items['2'] = 3
+    # data = [['2','3','1'],['2','3','1'],['2','3','1'],['2','1','5'],['2','3','4'],['3','4','5'],['3','4','6']]
+    # unique_items['1'] = 2 + 2
+    # unique_items['2'] = 3 + 2
     # unique_items['3'] = 3
     # unique_items['4'] = 2
     # unique_items['5'] = 2
+    # unique_items['6'] = 1
     tree = FPTree(unique_items)
-    data = pd.Series.tolist(data)
-    # print(data)
     for row in data:
         tree.insert([x for x in row if x is not None])
-    # tree.print_supports()
-    # tree.print_nodes()
-    res = tree.fp_growth(min_sup)[1]
+    tree.print_supports()
+    res = tree.fp_growth(min_sup)
+    for key in sorted(res.keys()):
+        print(key,res[key])
     print(len(res))
-    for key in res.keys():
-        print(key,'\t',res[key])
+
+    
