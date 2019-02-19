@@ -1,0 +1,41 @@
+Frequent Itemset,Support
+citrus fruit,814
+margarine,576
+tropical fruit,1032
+yogurt,1372
+coffee,571
+whole milk,2513
+pip fruit,744
+other vegetables,1903
+butter,545
+rolls/buns,1809
+bottled beer,792
+white bread,414
+bottled water,1087
+chocolate,488
+curd,524
+beef,516
+frankfurter,580
+soda,1715
+chicken,422
+fruit/vegetable juice,711
+newspapers,785
+pastry,875
+root vegetables,1072
+canned beer,764
+sausage,924
+brown bread,638
+shopping bags,969
+napkins,515
+pork,567
+whipped/sour cream,705
+domestic eggs,624
+frozen vegetables,473
+"('tropical fruit', 'whole milk')",416
+"('whole milk', 'yogurt')",551
+"('other vegetables', 'yogurt')",427
+"('other vegetables', 'whole milk')",736
+"('whole milk', 'rolls/buns')",557
+"('whole milk', 'root vegetables')",481
+"('other vegetables', 'rolls/buns')",419
+"('other vegetables', 'root vegetables')",466

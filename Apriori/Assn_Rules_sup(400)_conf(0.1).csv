@@ -1,0 +1,17 @@
+LHS,LHS itemset count,--->,RHS,RHS itemset count,Confidence
+whole milk,2513,--->,tropical fruit,1032,0.1655391961798647
+tropical fruit,1032,--->,whole milk,2513,0.40310077519379844
+yogurt,1372,--->,whole milk,2513,0.40160349854227406
+whole milk,2513,--->,yogurt,1372,0.2192598487863112
+yogurt,1372,--->,other vegetables,1903,0.3112244897959184
+other vegetables,1903,--->,yogurt,1372,0.22438255386232264
+other vegetables,1903,--->,whole milk,2513,0.38675775091960063
+whole milk,2513,--->,other vegetables,1903,0.29287703939514526
+whole milk,2513,--->,rolls/buns,1809,0.2216474333465977
+rolls/buns,1809,--->,whole milk,2513,0.30790491984521834
+whole milk,2513,--->,root vegetables,1072,0.19140469558296858
+root vegetables,1072,--->,whole milk,2513,0.44869402985074625
+other vegetables,1903,--->,rolls/buns,1809,0.22017866526537047
+rolls/buns,1809,--->,other vegetables,1903,0.2316196793808734
+other vegetables,1903,--->,root vegetables,1072,0.24487651077246453
+root vegetables,1072,--->,other vegetables,1903,0.43470149253731344

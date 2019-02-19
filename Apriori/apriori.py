@@ -290,7 +290,7 @@ if __name__ == "__main__":
                 data_line = [itemset, str(freq_itemsets[transaction_len][itemset])]
                 freq_itemsets_df.loc[len(freq_itemsets_df)] = data_line
 
-        freq_itemsets_df.to_csv(file_name, index=False, encoding='utf-8')
+        #freq_itemsets_df.to_csv(file_name, index=False, encoding='utf-8')
 
     except:
         print("\nError occured during frequent itemsets generation. Try running again.")
@@ -354,11 +354,12 @@ if __name__ == "__main__":
             data_list = [LHS, LHS_count, '--->', RHS, RHS_count, confidence]
             assn_rules_df.loc[len(assn_rules_df)] = data_list
 
-        assn_rules_df.to_csv(file_name, index=False, encoding='utf-8')
+        #assn_rules_df.to_csv(file_name, index=False, encoding='utf-8')
 
-    except:
+    except Exception as e:
         print("\nError occured during association rules generation. Try running again.")
         rule_gen_time = 0
+        print(e)
 
     print("\nTimings:")
     print("Frequent itemsets generation: " + str(freq_gen_time))

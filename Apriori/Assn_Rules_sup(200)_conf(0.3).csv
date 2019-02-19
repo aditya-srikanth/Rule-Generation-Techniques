@@ -1,0 +1,37 @@
+LHS,LHS itemset count,--->,RHS,RHS itemset count,Confidence
+citrus fruit,814,--->,whole milk,2513,0.36855036855036855
+citrus fruit,814,--->,other vegetables,1903,0.3488943488943489
+margarine,576,--->,whole milk,2513,0.4131944444444444
+tropical fruit,1032,--->,whole milk,2513,0.40310077519379844
+tropical fruit,1032,--->,other vegetables,1903,0.34205426356589147
+yogurt,1372,--->,whole milk,2513,0.40160349854227406
+yogurt,1372,--->,other vegetables,1903,0.3112244897959184
+pip fruit,744,--->,whole milk,2513,0.3978494623655914
+other vegetables,1903,--->,whole milk,2513,0.38675775091960063
+butter,545,--->,whole milk,2513,0.4972477064220184
+rolls/buns,1809,--->,whole milk,2513,0.30790491984521834
+bottled water,1087,--->,whole milk,2513,0.3109475620975161
+curd,524,--->,whole milk,2513,0.4904580152671756
+beef,516,--->,whole milk,2513,0.4050387596899225
+frankfurter,580,--->,whole milk,2513,0.3482758620689655
+fruit/vegetable juice,711,--->,whole milk,2513,0.36849507735583686
+newspapers,785,--->,whole milk,2513,0.34267515923566877
+pastry,875,--->,whole milk,2513,0.3737142857142857
+root vegetables,1072,--->,whole milk,2513,0.44869402985074625
+sausage,924,--->,whole milk,2513,0.3181818181818182
+brown bread,638,--->,whole milk,2513,0.3887147335423197
+pork,567,--->,whole milk,2513,0.3844797178130511
+whipped/sour cream,705,--->,whole milk,2513,0.44964539007092197
+domestic eggs,624,--->,whole milk,2513,0.47275641025641024
+frozen vegetables,473,--->,whole milk,2513,0.4249471458773784
+pip fruit,744,--->,other vegetables,1903,0.34543010752688175
+root vegetables,1072,--->,other vegetables,1903,0.43470149253731344
+pork,567,--->,other vegetables,1903,0.37566137566137564
+whipped/sour cream,705,--->,other vegetables,1903,0.40283687943262414
+domestic eggs,624,--->,other vegetables,1903,0.35096153846153844
+sausage,924,--->,rolls/buns,1809,0.32575757575757575
+"('whole milk', 'yogurt')",551,--->,other vegetables,1903,0.397459165154265
+"('other vegetables', 'yogurt')",427,--->,whole milk,2513,0.5128805620608899
+"('root vegetables', 'whole milk')",481,--->,other vegetables,1903,0.47401247401247404
+"('root vegetables', 'other vegetables')",466,--->,whole milk,2513,0.4892703862660944
+"('whole milk', 'other vegetables')",736,--->,root vegetables,1072,0.30978260869565216
