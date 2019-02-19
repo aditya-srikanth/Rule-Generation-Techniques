@@ -45,12 +45,30 @@ class Apriroi_Algorithm():
                 if item != sec_item:
                     if set_len == 2:
                         new_tuple = tuple(set([item]).union(set([sec_item])))
-                        if sorted(new_tuple) not in sorted(tuple(new_itemset.keys())) and len(new_tuple) == set_len:
-                            new_itemset[new_tuple] = 0
+                        new_itemset_keys = new_itemset.keys()
+                        flag = 0
+                        for itemset_key in new_itemset_keys:
+                            if sorted(new_tuple) == sorted(tuple(itemset_key)):
+                                flag = 1
+                                break
+                        if flag == 0:
+                            if len(new_tuple) == set_len:
+                                new_itemset[new_tuple] = 0
+                        #if sorted(new_tuple) not in sorted(tuple(new_itemset.keys())) and len(new_tuple) == set_len:
+                            #new_itemset[new_tuple] = 0
                     else:
+                        new_itemset_keys = new_itemset.keys()
+                        flag = 0
                         new_tuple = tuple(set(list(item)).union(set(list(sec_item))))
-                        if sorted(new_tuple) not in sorted(tuple(new_itemset.keys())) and len(new_tuple) == set_len:
-                            new_itemset[new_tuple] = 0
+                        for itemset_key in new_itemset_keys:
+                            if sorted(new_tuple) == sorted(tuple(itemset_key)):
+                                flag = 1
+                                break
+                        if flag == 0:
+                            if len(new_tuple) == set_len:
+                                new_itemset[new_tuple] = 0
+                        #if sorted(new_tuple) not in sorted(tuple(new_itemset.keys())) and len(new_tuple) == set_len:
+                            #new_itemset[new_tuple] = 0
         # Counting of itemsets taking place here.
         for g_list in groceries_list:
             for new_key in new_itemset.keys():
@@ -263,7 +281,7 @@ if __name__ == "__main__":
         print("\nFrequent itemsets with support:")
         pprint(freq_itemsets)
 
-        file_name = 'Freq_Items_sup:' + str(min_support) + ".csv"
+        file_name = 'Freq_Items_sup(' + str(min_support) + ").csv"
         col_names = ['Frequent Itemset', 'Support']
         freq_itemsets_df = pd.DataFrame(columns=col_names)
 
@@ -272,7 +290,7 @@ if __name__ == "__main__":
                 data_line = [itemset, str(freq_itemsets[transaction_len][itemset])]
                 freq_itemsets_df.loc[len(freq_itemsets_df)] = data_line
 
-        freq_itemsets_df.to_csv(file_name, index=False, encoding='utf-8')
+        #freq_itemsets_df.to_csv(file_name, index=False, encoding='utf-8')
 
     except:
         print("\nError occured during frequent itemsets generation. Try running again.")
@@ -317,7 +335,7 @@ if __name__ == "__main__":
         print("\nGenerated association rules:")
         pprint(association_rules)
 
-        file_name = 'Assn_Rules_sup:' + str(min_support) + ",conf:" + str(min_confidence) + ".csv"
+        file_name = 'Assn_Rules_sup(' + str(min_support) + ")_conf(" + str(min_confidence) + ").csv"
         col_names = ['LHS', 'LHS itemset count', '--->', 'RHS', 'RHS itemset count', 'Confidence']
         assn_rules_df = pd.DataFrame(columns=col_names)
 
@@ -336,11 +354,12 @@ if __name__ == "__main__":
             data_list = [LHS, LHS_count, '--->', RHS, RHS_count, confidence]
             assn_rules_df.loc[len(assn_rules_df)] = data_list
 
-        assn_rules_df.to_csv(file_name, index=False, encoding='utf-8')
+        #assn_rules_df.to_csv(file_name, index=False, encoding='utf-8')
 
-    except:
+    except Exception as e:
         print("\nError occured during association rules generation. Try running again.")
         rule_gen_time = 0
+        print(e)
 
     print("\nTimings:")
     print("Frequent itemsets generation: " + str(freq_gen_time))
