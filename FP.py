@@ -5,6 +5,7 @@ import csv
 import operator
 from collections import OrderedDict
 from pprint import pprint
+from itertools import combinations, chain
 
 def process_dataset(path,min_sup,store=False):
     with open(path) as csv_file:
@@ -225,3 +226,52 @@ if __name__ == "__main__":
     for key in sorted(res.keys()):
         print(key,'value: ',res[key],sep='    ')
     print(len(res))
+    
+    import re
+import ast
+rows=rows[1:]
+ast.literal_eval(strTup)
+new_rows=[row[0] for row in rows]  
+yo=list(ast.literal_eval(new_rows[100]))
+lol=[]
+
+for row in new_rows[59:]:
+    lol.append(list(ast.literal_eval(row)))
+for row in new_rows[:59]:
+    lol.append([row])
+rows=[list(ast.literal_eval(new_rows[i])) for i in range(len(new_rows))
+lol.append(list(ast.literal_eval(new_rows[10])))
+
+
+    
+
+def Support(Frequent_Itemsets, itemset):
+    itemset_count=0
+    Frequent_Itemsets=lol
+    for Item_row in Frequent_Itemsets:
+        for val in Item_row:
+            result =  all(elem in val  for elem in itemset)
+#            print(result, itemset)
+            if result:
+                itemset_count+=1
+#    print(itemset_count)
+    return itemset_count
+
+def Conf(itemset1, itemset2):
+    Frequent_Itemsets=lol
+    if Support(lol, itemset1)!=0:
+        conf=Support(lol, itemset2)/Support(lol, itemset1)
+        return conf
+#minconf=0
+Rules=[]
+def Rule_Generation(Frequent_Itemsets, minsup, minconf):
+#    Frequent_Itemsets=lol
+    for val in Frequent_Itemsets:
+       for i in range(1,len(val)):
+            subsets = [v for v in combinations(val, i)]
+            for subset in subsets:
+                itemset1=list(subset)
+                itemset2=[item for item in list(val) if not item in itemset1]
+                if Conf(itemset1, itemset2)>minconf:
+                    print(itemset1,"----->", itemset2)
+                        
