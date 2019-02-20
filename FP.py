@@ -14,7 +14,7 @@ def process_dataset(path,min_sup,store=False):
     unique_items=[]
     for row in rows:
         unique_items.extend(row)
-        
+
     df=pd.Series(unique_items)
     counts=df.value_counts()
     unique_sets=counts.to_dict() 
@@ -28,7 +28,7 @@ def process_dataset(path,min_sup,store=False):
 
         sorted_items = sorted(d.items(), key=operator.itemgetter(1), reverse=True)
         itemsets.append(list((x[0] for x in sorted_items if x[1]>=min_sup)))
-    
+
     for k, v in list(unique_sets.items()):
         if v < min_sup:
             del unique_sets[k]
@@ -75,7 +75,7 @@ class FPTree:
         node.count += 1
         self.itemset_counts[node.value] += 1
         # does the depth traversal of the tree and inserts the node
-        # invariant: the transaction contains the NEXT item to be traversed 
+        # invariant: the transaction contains the NEXT item to be traversed
         # if the item does not exit, then return
         if len(transaction) <= 0:
             return
@@ -85,7 +85,7 @@ class FPTree:
         else:
             # if not then create that child and then recurse
             newNode = Node(transaction[0],node)
-            node.children[transaction[0]] = newNode 
+            node.children[transaction[0]] = newNode
             previous_occurrences = self.unique_items[transaction[0]]
             if len(previous_occurrences) > 0:
                 previous_occurrences[-1].next_node = newNode
@@ -104,19 +104,29 @@ class FPTree:
         for key in self.unique_items_list:
             for node in self.unique_items[key]:
                 node.temp_count = 0
+<<<<<<< HEAD
     def generate_conditional_fp_tree(self,prefix_paths, item_name):
+=======
+
+    def generate_conditional_fp_tree(self,prefix_paths):
+>>>>>>> 67fe7408161baa44f9287f7426a69338862bb6f8
         cache = {}
         for node in self.unique_items[item_name]:
             temp_node = node
             cache[temp_node] = temp_node.temp_count
+<<<<<<< HEAD
             temp_node.temp_count = temp_node.count
             
             while temp_node.value != 'Null':
+=======
+            while temp_node.value != "None":
+>>>>>>> 67fe7408161baa44f9287f7426a69338862bb6f8
                 temp_node.parent.temp_count = 0
                 temp_node = temp_node.parent
                 temp_node.visited = False
         for node in self.unique_items[item_name]:
             temp_node = node
+<<<<<<< HEAD
             while temp_node.value != 'Null':
                 temp_node.parent.temp_count += temp_node.temp_count 
                 if temp_node.count > 5000:
@@ -127,11 +137,24 @@ class FPTree:
         for key in cache.keys():
             key.temp_count = cache[key]
     def get_frequent_itemsets_with_suffix(self,prefix_tree,itemsets, item_name,minsup):
+=======
+            while temp_node.value != "None":
+                temp_node.parent.temp_count += temp_node.temp_count
+                temp_node = temp_node.parent
+        return cache
+
+    def reset_values(self,cache):
+        for key in cache.keys():
+            key.temp_count = cache[key]
+
+    def get_frequent_itemsets_with_suffix_mk2(self,prefix_tree,itemsets,minsup):
+>>>>>>> 67fe7408161baa44f9287f7426a69338862bb6f8
         if len(prefix_tree) == 0 or prefix_tree == None:
             return None
         if len(itemsets) == 0 or itemsets == None:
             return None
         key = list(prefix_tree.keys())[0]
+<<<<<<< HEAD
         cache = self.generate_conditional_fp_tree(prefix_tree[key], item_name)
         candidate_itemsets = {}
         next_tree = {}
@@ -141,6 +164,19 @@ class FPTree:
             temp_node = node.parent
             while temp_node.value != 'Null':
                 if not temp_node.visited and temp_node.value != 'Null':
+=======
+        # cache = self.generate_conditional_fp_tree(prefix_tree[key])
+        candidate_itemsets = {}
+        next_tree = {}
+
+        cache = self.generate_conditional_fp_tree(prefix_tree[key])
+        child_nodes = prefix_tree[key]
+        parents = [node.parent for node in child_nodes]
+        for node in parents:
+            temp_node = node
+            while temp_node.value != "None":
+                if not temp_node.visited:
+>>>>>>> 67fe7408161baa44f9287f7426a69338862bb6f8
                     c_key = key + '&' + temp_node.value
                     if c_key not in candidate_itemsets:
                         candidate_itemsets[c_key] = node.count
@@ -152,12 +188,13 @@ class FPTree:
                             print(item_name,temp_node.value, temp_node.temp_count, temp_node.parent.value, temp_node.parent.temp_count, type(temp_node.value), type(temp_node.parent.value))
                     temp_node.visited = True
                 temp_node = temp_node.parent
-        
+
         # prune candidates
+        # print('candidates:  ',candidate_itemsets)
         next_tree_keys = [key for key in candidate_itemsets.keys() if candidate_itemsets[key] >= minsup]
         candidate_itemsets = { key : candidate_itemsets[key] for key in next_tree_keys}
         next_tree = { key: next_tree[key] for key in next_tree_keys if key in next_tree}
-        
+
         for next_tree_key in next_tree_keys:
             temp = self.get_frequent_itemsets_with_suffix({next_tree_key:next_tree[next_tree_key]},itemsets[1:],item_name, minsup)
             candidate_itemsets.update(temp)
@@ -166,20 +203,32 @@ class FPTree:
         return candidate_itemsets
     def fp_growth(self,minsup):
         counts = {}
+<<<<<<< HEAD
         sorted_items = [x[0] for x in sorted(self.itemset_counts.items(), key=operator.itemgetter(1), reverse=False) if x[0] != '']
         #print(sorted_items)
+=======
+        sorted_items = [x[0] for x in sorted(self.items_with_support.items(), key=operator.itemgetter(1), reverse=False)]
+        # print(sorted_items)
+>>>>>>> 67fe7408161baa44f9287f7426a69338862bb6f8
         for item in sorted_items:
             threshold = self.items_with_support[item]
             if threshold < minsup:
+                print('skipped ',item)
                 continue
-            counts[item] = threshold 
+
+            counts[item] = threshold
             itemsets = list(sorted_items)
             #print('item: ',item)
             # for node in self.unique_items[item]:
             #     node.parent.temp_count = node.temp_count = node.count
             # _ = self.generate_conditional_fp_tree(self.unique_items[item])
             if len(itemsets) > 0:
+<<<<<<< HEAD
                 temp_dict = self.get_frequent_itemsets_with_suffix({item:[node for node in  self.unique_items[item]]},itemsets,item,minsup)
+=======
+                temp_dict = self.get_frequent_itemsets_with_suffix_mk2({item:[node for node in  self.unique_items[item]]},itemsets,minsup)
+                itemsets.pop()
+>>>>>>> 67fe7408161baa44f9287f7426a69338862bb6f8
                 if temp_dict != None:
                     counts.update(temp_dict)
                 itemsets.pop()
@@ -188,16 +237,29 @@ class FPTree:
         for key in counts.keys():
             temp = tuple(str(key).split('&'))
             data[temp] = counts[key]
+<<<<<<< HEAD
+=======
+
+>>>>>>> 67fe7408161baa44f9287f7426a69338862bb6f8
         return data
-        
-        
+
+
 
 if __name__ == "__main__":
+<<<<<<< HEAD
     min_sup = int(input('enter min-support\n'))
     data,unique_items = process_dataset('test_data.csv',min_sup,store=True)
     # data,unique_items = process_dataset('groceries.csv',min_sup,store=True)
     #print(unique_items,type(data))
+=======
+    # min_sup = int(input('enter min-support\n'))
+    min_sup = 300
+    data,unique_items = process_dataset('groceries.csv',min_sup,store=True)
+    # print(unique_items,type(data))
+    # data = pd.Series.tolist(data[:30])
+>>>>>>> 67fe7408161baa44f9287f7426a69338862bb6f8
     data = pd.Series.tolist(data)
+    # print(data)
     # pprint(data)
     # unique_items = {}
     # data = [['2','3','1'],['2','3','1'],['2','3','1'],['2','1','5'],['2','3','4'],['3','4','5'],['2','4','6'],['2','4','5']]
@@ -209,10 +271,17 @@ if __name__ == "__main__":
     # unique_items['6'] = 1
     tree = FPTree(unique_items)
     for row in data:
+        # print('key: ',[x for x in row if x is not None])
         tree.insert([x for x in row if x is not None])
+<<<<<<< HEAD
     #tree.print_nodes()
     res = tree.fp_growth(min_sup)
     tree.print_supports()
+=======
+    # tree.print_nodes()
+    # tree.print_nodes()
+    res = tree.fp_growth_mk_2(min_sup)
+>>>>>>> 67fe7408161baa44f9287f7426a69338862bb6f8
     for key in sorted(res.keys()):
         print(key,'value: ',res[key],sep='    ')
     print(len(res))
