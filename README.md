@@ -27,6 +27,21 @@ Maximal frequent itemsets | 0.000337
 Closed frequent itemsets | 0.000339
 Association rules | 0.000769
 
+
+### FP Tree
+
+1. ***insert()***: Inserts values into the tree, is a wrapper which calls insert_recurse 
+2. ***insert_recurse()***: Recursively descends the tree and inserts the transaction into the tree
+3. ***print_nodes()***: Utility for printing the supports, the parent, and the children of each node in the tree
+4. ***print_supports()***: Utility for printing the support counts for each item
+5. ***reset_nodes()***: Used by get_frequent_itemsets_with_suffix to extract the candidate itemsets
+6. ***generate_conditional_fp_tree()***: Used to traverse the tree and generate the tree
+7. ***reset_values()***: Resets the temp_val of each node 
+8. ***get_frequent_itemsets_with_suffix()***: This returns the frequent itemsets recursively
+9. ***fp_growth()***: Wrapper that is used to extact the frequent itemsets
+10. ***process_dataset()***: Used to preprocess the dataset, sort according to the supports and remove None values
+11. ******
+
 ### Built With
  The project uses:
  1. Python3
