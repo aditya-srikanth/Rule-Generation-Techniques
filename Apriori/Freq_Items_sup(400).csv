@@ -32,10 +32,10 @@ whipped/sour cream,705
 domestic eggs,624
 frozen vegetables,473
 "('tropical fruit', 'whole milk')",416
-"('whole milk', 'yogurt')",551
-"('other vegetables', 'yogurt')",427
-"('other vegetables', 'whole milk')",736
+"('yogurt', 'whole milk')",551
+"('yogurt', 'other vegetables')",427
+"('whole milk', 'other vegetables')",736
 "('whole milk', 'rolls/buns')",557
-"('whole milk', 'root vegetables')",481
+"('root vegetables', 'whole milk')",481
 "('other vegetables', 'rolls/buns')",419
-"('other vegetables', 'root vegetables')",466
+"('root vegetables', 'other vegetables')",466

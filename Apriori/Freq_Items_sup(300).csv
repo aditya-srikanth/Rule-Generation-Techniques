@@ -42,21 +42,21 @@ dessert,365
 domestic eggs,624
 frozen vegetables,473
 onions,305
-"('whole milk', 'citrus fruit')",300
+"('citrus fruit', 'whole milk')",300
 "('whole milk', 'tropical fruit')",416
 "('other vegetables', 'tropical fruit')",353
 "('whole milk', 'yogurt')",551
 "('other vegetables', 'yogurt')",427
-"('yogurt', 'rolls/buns')",338
-"('whole milk', 'other vegetables')",736
-"('whole milk', 'rolls/buns')",557
-"('whole milk', 'bottled water')",338
+"('rolls/buns', 'yogurt')",338
+"('other vegetables', 'whole milk')",736
+"('rolls/buns', 'whole milk')",557
+"('bottled water', 'whole milk')",338
 "('whole milk', 'soda')",394
 "('whole milk', 'pastry')",327
-"('whole milk', 'root vegetables')",481
+"('root vegetables', 'whole milk')",481
 "('whole milk', 'whipped/sour cream')",317
 "('other vegetables', 'rolls/buns')",419
 "('other vegetables', 'soda')",322
 "('other vegetables', 'root vegetables')",466
-"('soda', 'rolls/buns')",377
-"('sausage', 'rolls/buns')",301
+"('rolls/buns', 'soda')",377
+"('rolls/buns', 'sausage')",301

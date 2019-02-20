@@ -30,8 +30,3 @@ pork,567,--->,other vegetables,1903,0.37566137566137564
 whipped/sour cream,705,--->,other vegetables,1903,0.40283687943262414
 domestic eggs,624,--->,other vegetables,1903,0.35096153846153844
 sausage,924,--->,rolls/buns,1809,0.32575757575757575
-"('whole milk', 'yogurt')",551,--->,other vegetables,1903,0.397459165154265
-"('other vegetables', 'yogurt')",427,--->,whole milk,2513,0.5128805620608899
-"('root vegetables', 'whole milk')",481,--->,other vegetables,1903,0.47401247401247404
-"('root vegetables', 'other vegetables')",466,--->,whole milk,2513,0.4892703862660944
-"('whole milk', 'other vegetables')",736,--->,root vegetables,1072,0.30978260869565216
