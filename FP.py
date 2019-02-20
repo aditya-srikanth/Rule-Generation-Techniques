@@ -24,7 +24,8 @@ def process_dataset(path,min_sup,store=False):
     sorted_items = sorted(unique_sets.items(), key=operator.itemgetter(1), reverse=True)
 
     itemsets=[]
-    row=rows[3]   
+
+    # row=rows[3]   
     for row in rows:
         l=[]
         for value in row:
@@ -192,16 +193,21 @@ class FPTree:
                 if temp_dict != None:
                     counts.update(temp_dict)
             self.reset_nodes()
-        return counts
+        data = {}
+        for key in counts.keys():
+            temp = tuple(str(key).split('&'))
+            data[temp] = counts[key]
+        
+        return data
         
         
 
 if __name__ == "__main__":
     min_sup = int(input('enter min-support\n'))
-    data,unique_items = process_dataset('test_data.csv',min_sup)
-    # print(unique_items,type(data))
+    data,unique_items = process_dataset('test_data.csv',min_sup,store=True)
+    print(unique_items,type(data))
     data = pd.Series.tolist(data)
-    pprint(data)
+    # pprint(data)
     # unique_items = {}
     # data = [['2','3','1'],['2','3','1'],['2','3','1'],['2','1','5'],['2','3','4'],['3','4','5'],['2','4','6'],['2','4','5']]
     # unique_items['1'] = 4
@@ -217,5 +223,5 @@ if __name__ == "__main__":
     res = tree.fp_growth_mk_2(min_sup)
     tree.print_supports()
     for key in sorted(res.keys()):
-        print(key,'\t\t\t\t value: ',res[key])
-    # print(len(res))
+        print(key,'value: ',res[key],sep='    ')
+    print(len(res))
