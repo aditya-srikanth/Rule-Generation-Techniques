@@ -1,3 +1,10 @@
+<<<<<<< HEAD
+bread,milk,,
+bread,diapers,beer,
+milk,diapers,beer,coke
+bread,milk,diapers,beer
+bread,milk,diapers,coke
+=======
 citrus fruit,margarine,,,,,,,,,,,,,,,,,
 yogurt,tropical fruit,coffee,,,,,,,,,,,,,,,,
 whole milk,,,,,,,,,,,,,,,,,,
@@ -9833,3 +9840,4 @@ whole milk,root vegetables,sausage,citrus fruit,whipped/sour cream,coffee,butter
 other vegetables,rolls/buns,yogurt,citrus fruit,domestic eggs,butter,chicken,,,,,,,,,,,,
 soda,bottled water,bottled beer,,,,,,,,,,,,,,,,
 other vegetables,tropical fruit,shopping bags,chicken,,,,,,,,,,,,,,,
+>>>>>>> 67fe7408161baa44f9287f7426a69338862bb6f8
