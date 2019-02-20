@@ -158,7 +158,7 @@ class Apriroi_Algorithm():
 
         return closed_freq_itemsets
 
-    def rule_generation(self, freq_itemsets, min_confidence):
+    def rule_generation(self, freq_itemsets, min_confidence, closed_freq_itemsets):
         '''
         This function generates association rules from the generated frequent itemsets by
         evaluating against the minimum confidence value defined by the user.
@@ -169,6 +169,8 @@ class Apriroi_Algorithm():
         @param min_confidence: Minimum confidence defined by the user.
         '''
         association_rules = {}
+        redundant_rules = {}
+        closed_freq_keys = closed_freq_itemsets.keys()
         max_key = int(max(freq_itemsets.keys()))
 
         for key in freq_itemsets.keys():
@@ -193,9 +195,23 @@ class Apriroi_Algorithm():
                                     if confidence >= min_confidence:
                                         if len(consequent) == 1:
                                             consequent = consequent[0]
-                                        association_rules[tuple([itemset_subset, consequent])] = confidence
+                                        flag = 0
+                                        for closed_itemset in closed_freq_keys:
+                                            if set(list(itemset_subset)).issubset(set(list(closed_itemset))):
+                                                if len(closed_itemset) == 1:
+                                                    closed_itemset = closed_itemset[0]
+                                                    closed_sub_key = 1
+                                                else:
+                                                    closed_sub_key = len(closed_itemset)
+                                                if freq_itemsets[str(sub_key)][itemset_subset] == freq_itemsets[str(closed_sub_key)][closed_itemset]:
+                                                    flag = 1
+                                                    break
+                                        if flag == 0:
+                                            association_rules[tuple([itemset_subset, consequent])] = confidence
+                                        else:
+                                            redundant_rules[tuple([itemset_subset, consequent])] = confidence
 
-        return association_rules
+        return [association_rules, redundant_rules]
 
     def max_length(self, some_list):
         '''
@@ -327,13 +343,17 @@ if __name__ == "__main__":
     try:
         start = time.clock()
 
-        association_rules = (pool.apply_async(apriori.rule_generation, (freq_itemsets, min_confidence))).get()
+        rules = (pool.apply_async(apriori.rule_generation, (freq_itemsets, min_confidence, closed_freq_itemsets))).get()
+        association_rules = rules[0]
+        redundant_rules = rules[1]
 
         end = time.clock()
         rule_gen_time = end - start
 
         print("\nGenerated association rules:")
         pprint(association_rules)
+        print("\nRedundant rules:")
+        pprint(redundant_rules)
 
         file_name = 'Assn_Rules_sup(' + str(min_support) + ")_conf(" + str(min_confidence) + ").csv"
         col_names = ['LHS', 'LHS itemset count', '--->', 'RHS', 'RHS itemset count', 'Confidence']
