@@ -288,7 +288,7 @@ if __name__ == "__main__":
     print(len(res))
 <<<<<<< HEAD
     
-    import re
+import re
 import ast
 rows=rows[1:]
 ast.literal_eval(strTup)
@@ -321,8 +321,9 @@ def Support(Frequent_Itemsets, itemset):
 def Conf(itemset1, itemset2):
     Frequent_Itemsets=lol
     if Support(lol, itemset1)!=0:
-        conf=Support(lol, itemset2)/Support(lol, itemset1)
+        conf=Support(lol, itemset2+itemset1)/Support(lol, itemset1)
         return conf
+    return 0
 #minconf=0
 Rules=[]
 def Rule_Generation(Frequent_Itemsets, minsup, minconf):
