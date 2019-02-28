@@ -334,8 +334,9 @@ def Rule_Generation(Frequent_Itemsets, minsup, minconf):
             for subset in subsets:
                 itemset1=list(subset)
                 itemset2=[item for item in list(val) if not item in itemset1]
-                if Conf(itemset1, itemset2)>minconf:
-                    print(itemset1,"----->", itemset2)
+                conf=Conf(itemset1, itemset2)
+                if conf>minconf:
+                    print(itemset1,"----->", itemset2, "confidence:",conf)
                         
 =======
 >>>>>>> e0c186360821c1bd48c6e49cc07dda68f20752da
